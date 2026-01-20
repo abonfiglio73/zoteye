@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% seo %}
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
+  </head>
+
+  <body>
+    <div id="top"></div>
+    <header class="site-header">
+      <div class="logo-container">
+        <img
+          src="{{ '/assets/images/zoteye-logo.png' | relative_url }}"
+          alt="Zoteye Logo"
+          class="site-logo"
+        />
+      </div>
+
+      <h1>{{ site.title }}</h1>
+      <h2>{{ site.tagline }}</h2>
+
+      <!-- Dark / Light toggle -->
+      <div>
+        <button id="theme-toggle" class="btn" aria-label="Toggle theme">
+          <svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <span>Light mode</span>
+        </button>
+      </div>
+
+      <!-- Navbar -->
+      <nav class="site-nav">
+        <ul>
+          <li><a href="https://github.com/abonfiglio73/zoteye/releases/latest/download/ZotEye_Installer.exe">Download</a></li>
+          <li><a href="https://github.com/abonfiglio73/zoteye" target="_blank">Read the Docs</a></li>
+        </ul>
+      </nav>
+      <br><a href="#installation-notes">Installation Notes</a>
+    </header>
+
+    <main class="site-content">
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 {{ site.author.name }} | <a href="https://github.com/abonfiglio73/zoteye">GitHub Project</a> | <a href="https://github.com/abonfiglio73">GitHub Profile</a></p>
+    </footer>
+
+    <a href="#top" id="back-to-top">↑ Back to top</a>
+
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+   
+  </body>
+</html>
