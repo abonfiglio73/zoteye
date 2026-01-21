@@ -1,8 +1,11 @@
 services:
   jekyll:
-    image: jekyll/jekyll:4
+    image: jekyll/jekyll:3
     command: >
       sh -c "gem install webrick &&
+      gem install minima -v 2.5.1 &&
+      gem install jekyll-sitemap -v 1.4.0 &&
+      gem install jekyll-titles-from-headings -v 0.5.3 &&
       jekyll serve
       --host 0.0.0.0
       --watch
