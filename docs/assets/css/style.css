@@ -281,4 +281,8 @@ a:hover {
   #theme-toggle span {
     display: none;
   }
+
+  #back-to-top {
+    display: none !important;
+  }
 }
