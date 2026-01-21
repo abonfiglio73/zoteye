@@ -21,6 +21,7 @@
 [![Python3.11-3.14](https://img.shields.io/badge/Python-3.11--3.14-blue)](https://www.python.org/downloads/)
 [![Release](https://img.shields.io/github/v/release/abonfiglio73/zoteye)](https://github.com/abonfiglio73/zoteye/releases/latest)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Live Site](https://img.shields.io/badge/Website-Live-brightgreen)](https://abonfiglio73.github.io/zoteye/)
 <!-- For private repository -->
 <!-- [![Release](https://img.shields.io/badge/release-latest-green)](https://github.com/account/repo/releases) -->
 <!-- For public repository -->
