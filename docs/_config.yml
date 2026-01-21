@@ -15,6 +15,10 @@ image: /assets/images/zoteye-screenshot-interface.png
 
 markdown: kramdown
 
+titles_from_headings:
+  enabled: false
+
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-titles-from-headings
