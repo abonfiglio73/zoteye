@@ -112,26 +112,40 @@ class ZotEyeApp:
 
         if zotero_db and os.path.exists(zotero_db):
 
-            collections = get_zotero_collections(zotero_db)
+            try:
+                collections = get_zotero_collections(zotero_db)
 
-            for col in collections:
-                self.zotero_collection_listbox.insert(tk.END, col)
+                for col in collections:
+                    self.zotero_collection_listbox.insert(tk.END, col)
 
-            selected_names = []
-            val = self.collection_var.get()
-            if val:
-                selected_names = [c.strip() for c in val.split(";")]
+                selected_names = []
+                val = self.collection_var.get()
+                if val:
+                    selected_names = [c.strip() for c in val.split(";")]
 
-            for i, col in enumerate(collections):
-                if col in selected_names:
-                    self.zotero_collection_listbox.selection_set(i)
+                for i, col in enumerate(collections):
+                    if col in selected_names:
+                        self.zotero_collection_listbox.selection_set(i)
+            except Exception as e:
+                messagebox.showerror(
+                    APP_NAME, self.translator.gettext("error_reading_zotero_collections")
+                )
+                self.zotero_collection_listbox.insert(
+                    tk.END,
+                    f"— {self.translator.gettext('error_collection_zotero_not_found')} —",
+                )
+                self.logger.log(
+                    f"{self.translator.gettext('error_collection_zotero_not_found')}",
+                    LogLevel.ERROR,
+                )
+            finally:
+                self.updating_listbox = False
         else:
             self.zotero_collection_listbox.insert(
                 tk.END,
                 f"— {self.translator.gettext('error_no_collection_available')} —",
             )
-
-        self.updating_listbox = False
+            self.updating_listbox = False
 
     def update_mode(self):
 
@@ -635,21 +649,8 @@ class ZotEyeApp:
         self.stop_button.config(state="disabled")
 
         # Update Zotero collections
-        try:
-            self.update_listbox_collections()
-        except Exception as e:
-            messagebox.showerror(
-                APP_NAME, self.translator.gettext("error_reading_zotero_collections")
-            )
-            self.zotero_collection_listbox.insert(
-                tk.END,
-                f"— {self.translator.gettext('error_collection_zotero_not_found')} —",
-            )
-            self.logger.log(
-                f"{self.translator.gettext('error_collection_zotero_not_found')}",
-                LogLevel.ERROR,
-            )
-
+        self.update_listbox_collections()
+    
         # Show/hide widgets based on comparison mode
         self.update_mode()
 
